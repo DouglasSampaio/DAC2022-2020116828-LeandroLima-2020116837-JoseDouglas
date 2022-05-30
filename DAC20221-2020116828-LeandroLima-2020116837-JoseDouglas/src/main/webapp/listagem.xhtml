@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head></h:head>
+<h:body>
+	<h:form id="formulario">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+
+		<p:panel header="Resultados">
+			<p:dataTable value="#{jogoBean.listar}" var="j">
+
+				<p:column headerText="id">
+					<p:outputLabel value="#{j.id}" />
+				</p:column>
+				<p:column headerText="nome">
+					<p:outputLabel value="#{j.v1}," />
+					<p:outputLabel value="#{j.v2}," />
+					<p:outputLabel value="#{j.v3}," />
+					<p:outputLabel value="#{j.v4}," />
+					<p:outputLabel value="#{j.v5}," />
+					<p:outputLabel value="#{j.v6}," />
+					<p:outputLabel value="#{j.v7}," />
+					<p:outputLabel value="#{j.v8}," />
+					<p:outputLabel value="#{j.v9}," />
+					<p:outputLabel value="#{j.v10}" />
+
+				</p:column>
+
+				<p:column headerText="Descrição">
+					<p:outputLabel value="#{j.descricao}" />
+				</p:column>
+				<p:column>
+					<p:commandButton value="Pares" action="#{jogoBean.pares(j)}" />
+				</p:column>
+
+				<p:column>
+					<p:commandButton value="Editar" action="editar" update="formulario">
+						<f:setPropertyActionListener value="#{j}"
+							target="#{jogoBean.jogo}" />
+					</p:commandButton>
+
+				</p:column>
+				<p:column>
+					<p:commandButton value="Excluir"
+						action="#{jogoBean.excluir(j)}" update="formulario" />
+
+				</p:column>
+			</p:dataTable>
+			<p:link outcome="index" value="voltar" />
+		</p:panel>
+	</h:form>
+</h:body>
+</html>
